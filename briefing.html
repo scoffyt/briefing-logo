@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Briefing de Logotipo</title>
+  <style>
+    * { box-sizing: border-box; margin:0; padding:0; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #1e3c72, #2a5298);
+      padding: 20px;
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+    }
+    h1 { text-align:center; margin-bottom:25px; font-size:2rem; text-shadow:0 2px 8px rgba(0,0,0,0.4);}
+    form {
+      background: rgba(255,255,255,0.08);
+      backdrop-filter: blur(20px);
+      border-radius: 18px;
+      padding: 30px;
+      width: 100%;
+      max-width: 900px;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.3);
+      animation: fadeIn 0.7s ease-in-out;
+    }
+    fieldset {
+      border:1px solid rgba(255,255,255,0.3);
+      border-radius:14px;
+      padding:25px;
+      margin-bottom:25px;
+      background: rgba(255,255,255,0.05);
+    }
+    legend { font-weight:bold; font-size:1.2rem; padding:0 12px;}
+    label { display:block; margin-bottom:6px; font-weight:600; font-size:0.95rem; color:#e0e7ff;}
+    input, textarea, select {
+      width:100%; padding:14px; margin-bottom:18px; border:none; border-radius:12px;
+      font-size:14px; outline:none; background: rgba(255,255,255,0.15); color:#fff; transition: all 0.3s ease;
+    }
+    input:focus, textarea:focus, select:focus { background: rgba(255,255,255,0.25); box-shadow:0 0 12px rgba(255,255,255,0.4);}
+    textarea { resize: vertical; min-height:100px;}
+    .row { display:flex; gap:15px; flex-wrap:wrap;}
+    .row .col { flex:1; min-width:200px;}
+    button {
+      display:block; width:100%; padding:16px;
+      background: linear-gradient(135deg, #2563eb, #1d4ed8);
+      color:#fff; border:none; border-radius:14px; font-size:16px;
+      cursor:pointer; font-weight:bold; transition: all 0.3s ease; margin-top:10px;
+    }
+    button:hover { background: linear-gradient(135deg,#1d4ed8,#1e40af); transform:translateY(-3px); box-shadow:0 8px 18px rgba(0,0,0,0.35);}
+    @keyframes fadeIn { from {opacity:0; transform:translateY(20px);} to {opacity:1; transform:translateY(0);} }
+    @media(max-width:600px){ .row{flex-direction:column;} .row .col{min-width:100%;} }
+
+    /* Placeholder branco */
+    input::placeholder,
+    textarea::placeholder,
+    select::placeholder {
+      color: rgba(255, 255, 255, 0.7);
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+  <form id="briefingForm">
+    <h1>Briefing de Logotipo</h1>
+
+    <!-- 1. Informações Gerais -->
+    <fieldset>
+      <legend>1. Informações Gerais</legend>
+      <label>Nome da empresa:</label>
+      <input type="text" name="empresa" placeholder="Digite o nome da empresa" required>
+
+      <label>Responsável pelo preenchimento:</label>
+      <input type="text" name="responsavel" placeholder="Nome do responsável" required>
+
+      <div class="row">
+        <div class="col">
+          <label>Data:</label>
+          <input type="date" name="data" required>
+        </div>
+        <div class="col">
+          <label>Prazo desejado:</label>
+          <input type="date" name="prazo">
+        </div>
+      </div>
+    </fieldset>
+
+    <!-- 2. Público-Alvo -->
+    <fieldset>
+      <legend>2. Público-Alvo</legend>
+      <label>Descrição do público:</label>
+      <input type="text" name="audience" placeholder="Ex: Jovens entre 18 e 30 anos">
+
+      <div class="row">
+        <div class="col">
+          <label>Localização:</label>
+          <input type="text" name="location" placeholder="Cidade, Estado, País">
+        </div>
+        <div class="col">
+          <label>Faixa etária:</label>
+          <input type="text" name="age" placeholder="Ex: 18-35 anos">
+        </div>
+      </div>
+    </fieldset>
+
+    <!-- 3. Identidade da Marca -->
+    <fieldset>
+      <legend>3. Identidade da Marca</legend>
+      <label>Palavras-chave que definem a marca:</label>
+      <input type="text" name="keywords" placeholder="Ex: Inovadora, moderna, confiável">
+
+      <label>Personalidade:</label>
+      <input type="text" name="personality" placeholder="Ex: Moderna e jovem">
+
+      <label>Cores da marca:</label>
+      <input type="text" name="colors" placeholder="Ex: Azul #1d4ed8, Branco #ffffff">
+
+      <label>Ideias de ícones ou símbolos:</label>
+      <textarea name="icons" placeholder="Ex: Águia, estrela, letra estilizada"></textarea>
+    </fieldset>
+
+    <!-- 4. Objetivos -->
+    <fieldset>
+      <legend>4. Objetivos</legend>
+      <label>Principal objetivo:</label>
+      <textarea name="objetivo" placeholder="Descreva o objetivo principal"></textarea>
+
+      <label>Metas específicas:</label>
+      <textarea name="metas" placeholder="Liste metas específicas"></textarea>
+    </fieldset>
+
+    <!-- 5. Orçamento -->
+    <fieldset>
+      <legend>5. Orçamento</legend>
+      <label>Valor disponível:</label>
+      <input type="number" name="orcamento" placeholder="Digite o valor em R$">
+    </fieldset>
+
+    <button type="submit">Enviar Briefing</button>
+  </form>
+
+  <script>
+    const form = document.getElementById('briefingForm');
+    const webhookURL = "https://discord.com/api/webhooks/1419070666879008788/VEWSFtbbWbf7rFahgekDOSzKnL5ckD_FNOUgypabm-6eAzyOvX2FtFnUga2y2dCwon4_";
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const formData = new FormData(form);
+      let message = "**📄 Novo Briefing Recebido:**\n\n";
+      formData.forEach((value, key) => {
+        message += `**${key.replace(/_/g, ' ')}:** ${value}\n`;
+      });
+
+      try {
+        await fetch(webhookURL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ content: message })
+        });
+        alert("Briefing enviado com sucesso!");
+        form.reset();
+      } catch (err) {
+        alert("Erro ao enviar briefing. Tente novamente.");
+        console.error(err);
+      }
+    });
+  </script>
+</body>
+</html>
